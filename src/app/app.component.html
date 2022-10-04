@@ -1,11 +1,17 @@
 <div class="container">
-    <div class="row">
-        <div class="col-xs-12">
-            <h3>I'm the app Component (the big main one)</h3>
-            <hr>
-            <app-servers></app-servers>
-            <warning-message></warning-message>
-            <success-message></success-message>
-        </div>
+<app-main-compnt 
+(serverCreatedd)="onServerAdded($event)"
+(bpCreated)="onBlueprintAdded($event)"
+></app-main-compnt>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12">
+<app-server-element *ngFor="let serverElement of serverElements" [srvElement]="serverElement">
+  <p>
+    <strong *ngIf="serverElement === 'server'" style="color: red">{{ serverElement.content }}</strong>
+    <em *ngIf="serverElement.type === 'blueprint'">{{ serverElement.content }}</em>
+  </p>
+</app-server-element>
     </div>
+  </div>
 </div>
